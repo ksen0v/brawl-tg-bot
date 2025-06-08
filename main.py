@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher, F
 import asyncio
 
-from core.handlers.main_handlers import buy_pass, no_money, calc_rbx_to_rub_answer, calc_rub_to_rbx_answer, calc_rbx_to_rub, calc_rub_to_rbx, calc, reviews, news, rate, get_start, top_up, process_top_up_amount, top_up_by_card, bill_proceed, buy_gems, top_up_query, pay_out, support, support_send_message, support_message_send_success, profile
+from core.handlers.main_handlers import buy_pass, no_money, reviews, news, get_start, top_up, process_top_up_amount, top_up_by_card, bill_proceed, buy_gems, top_up_query, pay_out, support, support_send_message, support_message_send_success, profile
 from config_loader import TOKEN, ADMIN_ID, MESSAGES
 from core.states.main_states import BillStates, Abstract
 
@@ -40,14 +40,8 @@ async def main():
     dp.message.register(support_message_send_success, Abstract.temp)
     dp.message.register(profile, F.text == '👤 Профиль')
     dp.callback_query.register(get_start, F.data == 'main_menu')
-    dp.message.register(rate, F.text == '💹 Курс')
     dp.message.register(news, F.text == '📰 Новостник')
     dp.message.register(reviews, F.text == '😀 Отзывы')
-    dp.message.register(calc, F.text == '🔢 Калькулятор')
-    dp.message.register(calc_rub_to_rbx, F.text == '🌟 Посчтитать рубли в RBX')
-    dp.message.register(calc_rbx_to_rub, F.text == '🌟 Посчитать RBX в рубли')
-    dp.message.register(calc_rbx_to_rub_answer, Calc.calc1)
-    dp.message.register(calc_rub_to_rbx_answer, Calc.calc2)
 
     try:
         await dp.start_polling(bot)

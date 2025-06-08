@@ -81,39 +81,9 @@ async def support_message_send_success(message: Message, state: FSMContext):
 async def profile(message: Message):
     await message.answer(str(MESSAGES['profile']).format(tag=message.from_user.username, uid=message.from_user.id, id=random.randint(1000, 10000)))
 
-async def rate(message: Message):
-    await message.answer(str(MESSAGES['rate']).format(rub=round(float(1/float(RATE)), 2)))
-
 async def news(message: Message):
     await message.answer(MESSAGES['news'], reply_markup=news_inline())
 
 async def reviews(message: Message):
     await message.answer(MESSAGES['reviews'], reply_markup=reviews_inline())
-
-async def calc(message: Message):
-    await message.answer(MESSAGES['calc'], reply_markup=calc_reply())
-
-async def calc_rbx_to_rub(message: Message, state: FSMContext):
-    await message.answer(MESSAGES['calc1'])
-    await state.set_state(Calc.calc1)
-
-async def calc_rub_to_rbx(message: Message, state: FSMContext):
-    await message.answer(MESSAGES['calc2'])
-    await state.set_state(Calc.calc2)
-
-async def calc_rbx_to_rub_answer(message: Message, state: FSMContext):
-    amount_text = message.text.strip()
-    if amount_text.isdigit():
-        await message.answer(f"🍪 {amount_text} RBX = {round(int(amount_text)*1/RATE, 2)} RUB")
-        await state.clear()
-    else:
-        await message.answer(MESSAGES['calc_no_symbole'])
-
-async def calc_rub_to_rbx_answer(message: Message, state: FSMContext):
-    amount_text = message.text.strip()
-    if amount_text.isdigit():
-        await message.answer(f"🍪 {amount_text} RUB = {int(int(amount_text)*RATE)} RBX")
-        await state.clear()
-    else:
-        await message.answer(MESSAGES['calc_no_symbole'])
 

@@ -1,7 +1,11 @@
 from aiogram import Bot, Dispatcher, F
 import asyncio
 
+<<<<<<< HEAD
 from core.handlers.main_handlers import buy_pass, no_money, reviews, news, get_start, top_up, process_top_up_amount, top_up_by_card, bill_proceed, buy_gems, top_up_query, pay_out, support, support_send_message, support_message_send_success, profile
+=======
+from core.handlers.main_handlers import buy_pass, no_money reviews, news, rate, get_start, top_up, process_top_up_amount, top_up_by_card, bill_proceed, buy_gems, top_up_query, pay_out, support, support_send_message, support_message_send_success, profile
+>>>>>>> 7cea6f9c10272733e9cba0dffefe11b02e6087d1
 from config_loader import TOKEN, ADMIN_ID, MESSAGES
 from core.states.main_states import BillStates, Abstract
 
